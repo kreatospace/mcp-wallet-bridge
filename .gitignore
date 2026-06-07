@@ -1,3 +1,6 @@
+# Git
+.github/
+
 # Dependencies
 node_modules/
 .pnp

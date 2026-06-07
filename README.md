@@ -1,4 +1,4 @@
-# @mcp-web3/wallet-bridge
+# mcp-wallet-bridge
 
 **The missing bridge between remote MCP servers and Web3 wallets.**
 
@@ -14,14 +14,14 @@ Claude → MCP tool → wallet-bridge → Approval URL → User's wallet → Sig
 
 Every existing approach forces a bad tradeoff:
 
-| Approach | Problem |
-|---|---|
-| Private key in env | Agent has full unsupervised access to funds |
-| Custodial wallet (Coinbase AgentKit) | You own the keys, not the user |
-| `mcp-wallet-signer` | stdio only — breaks with remote/HTTP MCP |
-| Phantom MCP server | Phantom accounts only |
+| Approach                             | Problem                                     |
+| ------------------------------------ | ------------------------------------------- |
+| Private key in env                   | Agent has full unsupervised access to funds |
+| Custodial wallet (Coinbase AgentKit) | You own the keys, not the user              |
+| `mcp-wallet-signer`                  | stdio only — breaks with remote/HTTP MCP    |
+| Phantom MCP server                   | Phantom accounts only                       |
 
-`@mcp-web3/wallet-bridge` works with **remote MCP over HTTP** (the transport used by claude.ai connectors, Claude Desktop remote servers, and any production deployment) and supports **any wallet** the user already has.
+`@kreato-mcp/wallet-bridge` works with **remote MCP over HTTP** (the transport used by claude.ai connectors, Claude Desktop remote servers, and any production deployment) and supports **any wallet** the user already has.
 
 ---
 
@@ -40,10 +40,10 @@ No keys ever leave the user's wallet.
 
 ```bash
 # Core server SDK
-npm install @mcp-web3/wallet-bridge
+npm install @kreato-mcp/wallet-bridge
 
 # React UI component (optional)
-npm install @mcp-web3/wallet-bridge-ui
+npm install @kreato-mcp/wallet-bridge-ui
 ```
 
 ---
@@ -53,7 +53,7 @@ npm install @mcp-web3/wallet-bridge-ui
 ### 1. Initialize the bridge (MCP server)
 
 ```ts
-import { createWalletBridge } from "@mcp-web3/wallet-bridge";
+import { createWalletBridge } from "@kreato-mcp/wallet-bridge";
 
 export const bridge = createWalletBridge({
   approvalBaseUrl: "https://yourapp.xyz/wallet/approve",
@@ -65,7 +65,7 @@ export const bridge = createWalletBridge({
 ### 2. Use it in any MCP tool
 
 ```ts
-import { bridge, formatBridgeResult } from "@mcp-web3/wallet-bridge";
+import { bridge, formatBridgeResult } from "@kreato-mcp/wallet-bridge";
 
 // Inside your MCP tool handler:
 server.tool("buy_product", async ({ productId, price }, ctx) => {
@@ -90,7 +90,7 @@ server.tool("buy_product", async ({ productId, price }, ctx) => {
 ```tsx
 // app/wallet/approve/[id]/page.tsx
 "use client";
-import { WalletApproval } from "@mcp-web3/wallet-bridge-ui";
+import { WalletApproval } from "@kreato-mcp/wallet-bridge-ui";
 import { useSendTransaction } from "wagmi";
 
 export default function ApprovePage({ params }: { params: { id: string } }) {
@@ -146,7 +146,7 @@ const bridge = createWalletBridge({ approvalBaseUrl: "..." });
 ### Prisma (production)
 
 ```ts
-import { PrismaAdapter } from "@mcp-web3/wallet-bridge/adapters/prisma";
+import { PrismaAdapter } from "@kreato-mcp/wallet-bridge/adapters/prisma";
 import { prisma } from "./lib/prisma";
 
 const bridge = createWalletBridge({
@@ -180,7 +180,7 @@ model McpWalletRequest {
 Implement the `StorageAdapter` interface to use any database:
 
 ```ts
-import { StorageAdapter, PendingRequest } from "@mcp-web3/wallet-bridge";
+import { StorageAdapter, PendingRequest } from "@kreato-mcp/wallet-bridge";
 
 class MyAdapter implements StorageAdapter {
   async create(req) { ... }
@@ -196,15 +196,15 @@ class MyAdapter implements StorageAdapter {
 
 ## Supported Chains
 
-| Chain | ID | Family |
-|---|---|---|
-| Ethereum | `ethereum` | EVM |
-| Base | `base` | EVM |
-| Base Sepolia | `base-sepolia` | EVM |
-| Polygon | `polygon` | EVM |
-| Arbitrum | `arbitrum` | EVM |
-| Optimism | `optimism` | EVM |
-| Solana | `solana` | Solana |
+| Chain         | ID              | Family |
+| ------------- | --------------- | ------ |
+| Ethereum      | `ethereum`      | EVM    |
+| Base          | `base`          | EVM    |
+| Base Sepolia  | `base-sepolia`  | EVM    |
+| Polygon       | `polygon`       | EVM    |
+| Arbitrum      | `arbitrum`      | EVM    |
+| Optimism      | `optimism`      | EVM    |
+| Solana        | `solana`        | Solana |
 | Solana Devnet | `solana-devnet` | Solana |
 
 Custom chains: pass any string as `chain` in your transaction — the bridge stores it and passes it through to the approval UI.
@@ -269,7 +269,10 @@ bridge.cleanup()
 ## React Hooks
 
 ```ts
-import { useWalletBridgeRequest, useBridgeApproval } from "@mcp-web3/wallet-bridge-ui";
+import {
+  useWalletBridgeRequest,
+  useBridgeApproval,
+} from "@kreato-mcp/wallet-bridge-ui";
 
 // Fetch + poll a request
 const { request, loading, error, refetch } = useWalletBridgeRequest({
