@@ -291,7 +291,7 @@ const { approve, reject, approving, phase } = useBridgeApproval({
 
 ## Apps Using This
 
-- [Kreato](https://kreato.xyz) — Web3 creator monetization platform
+- [Kreato](https://kreato.space) — Web3 creator monetization platform
 
 Add yours via PR.
 
