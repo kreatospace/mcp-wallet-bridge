@@ -1,7 +1,7 @@
 {
   "name": "mcp-web3-wallet-bridge-monorepo",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Monorepo for @mcp-web3/wallet-bridge",
   "workspaces": [
     "packages/core",
