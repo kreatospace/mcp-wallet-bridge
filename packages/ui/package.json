@@ -40,5 +40,14 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kreatospace/mcp-wallet-bridge.git",
+    "directory": "packages/ui"
+  },
+  "homepage": "https://github.com/kreatospace/mcp-wallet-bridge#readme",
+  "bugs": {
+    "url": "https://github.com/kreatospace/mcp-wallet-bridge/issues"
   }
 }

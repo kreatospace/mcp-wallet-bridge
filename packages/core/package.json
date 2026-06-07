@@ -77,10 +77,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mcp-web3/wallet-bridge"
+    "url": "git+https://github.com/kreatospace/mcp-wallet-bridge.git",
+    "directory": "packages/core"
   },
-  "homepage": "https://github.com/mcp-web3/wallet-bridge#readme",
+  "homepage": "https://github.com/kreatospace/mcp-wallet-bridge#readme",
   "bugs": {
-    "url": "https://github.com/mcp-web3/wallet-bridge/issues"
+    "url": "https://github.com/kreatospace/mcp-wallet-bridge/issues"
   }
 }
