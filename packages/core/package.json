@@ -1,6 +1,6 @@
 {
   "name": "@kreato-mcp/wallet-bridge",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Framework-agnostic wallet signing bridge for remote MCP servers. Supports MetaMask, Phantom, WalletConnect — EVM + Solana.",
   "keywords": [
     "mcp",
@@ -66,7 +66,8 @@
     "dev": "tsc --watch",
     "test": "node --experimental-vm-modules node_modules/.bin/jest",
     "lint": "eslint src --ext .ts",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "node -e \"require('fs').copyFileSync('../../README.md', './README.md')\""
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

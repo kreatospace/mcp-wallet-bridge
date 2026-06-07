@@ -27,7 +27,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "prepublishOnly": "node -e \"require('fs').copyFileSync('../../README.md', './README.md')\""
   },
   "peerDependencies": {
     "react": ">=18.0.0",
