@@ -1,0 +1,52 @@
+{
+  "name": "@kreato-mcp/wallet-bridge-adapters",
+  "version": "0.1.0",
+  "description": "Extra storage adapters for @kreato-mcp/wallet-bridge — Redis, etc.",
+  "keywords": [
+    "mcp",
+    "web3",
+    "wallet",
+    "bridge",
+    "redis",
+    "adapter"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./redis": {
+      "import": "./dist/redis.js",
+      "types": "./dist/redis.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "@kreato-mcp/wallet-bridge": "^0.1.0",
+    "ioredis": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "ioredis": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

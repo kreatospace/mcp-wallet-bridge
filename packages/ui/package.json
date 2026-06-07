@@ -1,0 +1,44 @@
+{
+  "name": "@kreato-mcp/wallet-bridge-ui",
+  "version": "0.1.0",
+  "description": "React UI components for kreato-mcp/wallet-bridge — approval modal, countdown, status display.",
+  "keywords": [
+    "mcp",
+    "web3",
+    "wallet",
+    "react",
+    "approval",
+    "bridge"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf dist"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,18 @@
+// Add this model to your existing schema.prisma
+// Then run: npx prisma migrate dev --name mcp_wallet_requests
+
+model McpWalletRequest {
+  id          String    @id @default(cuid())
+  sessionId   String
+  transaction Json
+  status      String    @default("pending")
+  approvalUrl String
+  createdAt   DateTime  @default(now())
+  expiresAt   DateTime
+  resolvedAt  DateTime?
+  result      Json?
+  error       String?
+
+  @@index([sessionId])
+  @@index([status, expiresAt])
+}

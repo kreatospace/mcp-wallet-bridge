@@ -1,0 +1,86 @@
+{
+  "name": "@kreato-mcp/wallet-bridge",
+  "version": "0.1.0",
+  "description": "Framework-agnostic wallet signing bridge for remote MCP servers. Supports MetaMask, Phantom, WalletConnect — EVM + Solana.",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "web3",
+    "wallet",
+    "bridge",
+    "metamask",
+    "phantom",
+    "walletconnect",
+    "ethereum",
+    "solana",
+    "base",
+    "evm",
+    "ai-agent"
+  ],
+  "author": "mcp-web3",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./adapters/prisma": {
+      "import": "./dist/store/prisma.js",
+      "types": "./dist/store/prisma.d.ts"
+    },
+    "./adapters/memory": {
+      "import": "./dist/store/memory.js",
+      "types": "./dist/store/memory.d.ts"
+    },
+    "./chains": {
+      "import": "./dist/chains/index.js",
+      "types": "./dist/chains/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./signers": {
+      "import": "./dist/signers/index.js",
+      "types": "./dist/signers/index.d.ts"
+    },
+    "./signers/evm": {
+      "import": "./dist/signers/evm.js",
+      "types": "./dist/signers/evm.d.ts"
+    },
+    "./signers/solana": {
+      "import": "./dist/signers/solana.js",
+      "types": "./dist/signers/solana.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "node --experimental-vm-modules node_modules/.bin/jest",
+    "lint": "eslint src --ext .ts",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mcp-web3/wallet-bridge"
+  },
+  "homepage": "https://github.com/mcp-web3/wallet-bridge#readme",
+  "bugs": {
+    "url": "https://github.com/mcp-web3/wallet-bridge/issues"
+  }
+}
