@@ -328,10 +328,15 @@ export function WalletApproval({
 
 function TxDetails({ tx, chainMeta }: { tx: Transaction; chainMeta: ReturnType<typeof getChainMeta> }) {
   const rows: { label: string; value: string }[] = [];
+  const currency = tx.metadata?.currency as string | undefined;
+  const originalPrice = tx.metadata?.originalPrice as string | undefined;
 
   if (tx.to) rows.push({ label: "To", value: formatAddress(tx.to) });
-  if (tx.value) rows.push({ label: "Amount", value: `${tx.value} ${chainMeta.symbol}` });
-  if (tx.amount) rows.push({ label: "Amount", value: tx.amount });
+  if (tx.value) rows.push({
+    label: "Amount",
+    value: `${tx.value} ${currency ?? chainMeta.symbol}${originalPrice ? ` (${originalPrice})` : ""}`,
+  });
+  else if (tx.amount) rows.push({ label: "Amount", value: tx.amount });
   if (tx.tokenAddress) rows.push({ label: "Token", value: formatAddress(tx.tokenAddress) });
   if (tx.message) rows.push({ label: "Message", value: tx.message.slice(0, 120) });
   if (tx.functionName) rows.push({ label: "Function", value: tx.functionName });
