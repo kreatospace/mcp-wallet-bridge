@@ -309,7 +309,18 @@ export function WalletApproval({
             disabled={actionLoading}
           >
             {phase === "approving" ? (
-              <span style={styles.spinner}>⟳ Approving…</span>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem" }}>
+                <span style={{
+                  display: "inline-block",
+                  width: "14px",
+                  height: "14px",
+                  border: "2px solid rgba(255,255,255,0.3)",
+                  borderTopColor: "#fff",
+                  borderRadius: "50%",
+                  animation: "spin 0.7s linear infinite",
+                }} />
+                Approving…
+              </span>
             ) : (
               "Approve"
             )}
